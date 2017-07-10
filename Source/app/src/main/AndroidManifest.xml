@@ -9,12 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".ui.user.UserActivity"
+            android:label="@string/title_activity_user">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.add_user.AddUserActivity"
+            android:parentActivityName=".ui.user.UserActivity"
+            android:label="@string/title_add_user">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.user.UserActivity" />
         </activity>
     </application>
 

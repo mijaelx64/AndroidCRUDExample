@@ -4,6 +4,9 @@ import android.content.Context;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.Settings;
+
+import mijaelx64.com.androidcrudexample.data.local.UsersPersistenceContract.UserEntry;
 
 /**
  * Created by Mijael Vargas on 7/9/2017.
@@ -22,13 +25,13 @@ public class UsersDbHelper extends SQLiteOpenHelper {
     private static final String COMMA_SEP = ",";
 
     private static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + UsersPersistenceContract.UserEntry.TABLE_NAME + " (" +
-                    UsersPersistenceContract.UserEntry._ID + INTEGER_TYPE + " PRIMARY KEY," +
-                    UsersPersistenceContract.UserEntry.COLUMN_NAME_NAME + TEXT_TYPE + COMMA_SEP +
-                    UsersPersistenceContract.UserEntry.COLUMN_NAME_ADDRESS + TEXT_TYPE + COMMA_SEP +
-                    UsersPersistenceContract.UserEntry.COLUMN_NAME_BIRTH_DATE + TEXT_TYPE + COMMA_SEP +
-                    UsersPersistenceContract.UserEntry.COLUMN_NAME_PHONE_NUMBER + TEXT_TYPE + COMMA_SEP +
-                    UsersPersistenceContract.UserEntry.COLUMN_NAME_EMAIL + TEXT_TYPE +
+            "CREATE TABLE " + UserEntry.TABLE_NAME + " (" +
+                    UserEntry._ID + INTEGER_TYPE + " PRIMARY KEY AUTOINCREMENT," +
+                    UserEntry.COLUMN_NAME_NAME + TEXT_TYPE + COMMA_SEP +
+                    UserEntry.COLUMN_NAME_ADDRESS + TEXT_TYPE + COMMA_SEP +
+                    UserEntry.COLUMN_NAME_BIRTH_DATE + TEXT_TYPE + COMMA_SEP +
+                    UserEntry.COLUMN_NAME_PHONE_NUMBER + TEXT_TYPE + COMMA_SEP +
+                    UserEntry.COLUMN_NAME_EMAIL + TEXT_TYPE +
                     " )";
 
     private static final String SQL_DELETE_ENTRIES =
@@ -44,6 +47,7 @@ public class UsersDbHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 
